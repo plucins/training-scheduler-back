@@ -19,6 +19,7 @@ public class Place {
     private String zipCode;
 
 
+    
     public Place() {
     }
 

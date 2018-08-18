@@ -1,9 +1,6 @@
 package com.example.trainingschedulerback.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +13,10 @@ public class Training {
 
     private LocalDateTime trainingStartDate;
     private LocalDateTime trainingEndDate;
-    private List<User> trainingParticipants;
+    @OneToMany
+    private List<User> trainingUsers;
+    @OneToOne()
+    @JoinColumn(name = "place_id")
     private Place place;
 
     public Training() {
@@ -25,7 +25,7 @@ public class Training {
     public Training(LocalDateTime trainingStartDate, LocalDateTime trainingEndDate, List<User> trainingParticipants, Place place) {
         this.trainingStartDate = trainingStartDate;
         this.trainingEndDate = trainingEndDate;
-        this.trainingParticipants = trainingParticipants;
+        this.trainingUsers = trainingParticipants;
         this.place = place;
     }
 
@@ -53,12 +53,12 @@ public class Training {
         this.trainingEndDate = trainingEndDate;
     }
 
-    public List<User> getTrainingParticipants() {
-        return trainingParticipants;
+    public List<User> getTrainingUsers() {
+        return trainingUsers;
     }
 
-    public void setTrainingParticipants(List<User> trainingParticipants) {
-        this.trainingParticipants = trainingParticipants;
+    public void setTrainingUsers(List<User> trainingUsers) {
+        this.trainingUsers = trainingUsers;
     }
 
     public Place getPlace() {

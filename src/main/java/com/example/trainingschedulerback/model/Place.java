@@ -18,8 +18,6 @@ public class Place {
     private String apartment;
     private String zipCode;
 
-
-    
     public Place() {
     }
 
